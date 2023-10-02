@@ -1,0 +1,6 @@
+github.com/GeoinovaDev/app-geoinova-encrypt v1.0.0 h1:8qdUiGuB4eOpsp5iG2z1OnHA+uyYJzZrraE/YnU/c60=
+github.com/GeoinovaDev/app-geoinova-encrypt v1.0.0/go.mod h1:ERfcDjk6Mg58KoboHrLNm60VONtNOwYN9xu6HBrMPzI=
+github.com/GeoinovaDev/app-geoinova-entity v1.0.1 h1:pTIfj1xJpE0gcY9Eujn/gauPzfb4ciBU/gq5P3tYqoc=
+github.com/GeoinovaDev/app-geoinova-entity v1.0.1/go.mod h1:ggqdvILhqOjc6aF2oKR4S0JZbgLqjLIC0suoSHEp0ME=
+github.com/elliotchance/phpserialize v1.3.3 h1:hV4QVmGdCiYgoBbw+ADt6fNgyZ2mYX0OgpnON1adTCM=
+github.com/elliotchance/phpserialize v1.3.3/go.mod h1:gt7XX9+ETUcLXbtTKEuyrqW3lcLUAeS/AnGZ2e49TZs=
