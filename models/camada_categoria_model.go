@@ -15,11 +15,16 @@ func (m *CamadaCategoriaModel) TableName() string {
 }
 
 func (m *CamadaCategoriaModel) ToEntity() *entity.CamadaCategoria {
+	categoria := entity.NewCamadaCategoria(m.CategoriaId)
+	if categoria.Id == 0 {
+		categoria = nil
+	}
+
 	return entity.
 		NewCamadaCategoriaBuilder(m.Id).
 		WithNome(m.Nome).
 		WithCor(m.Cor).
 		WithBorda(m.Borda).
-		WithCategoria(entity.NewCamadaCategoria(m.CategoriaId)).
+		WithCategoria(categoria).
 		Build()
 }
