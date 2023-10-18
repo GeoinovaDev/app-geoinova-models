@@ -9,7 +9,7 @@ type AtivoModel struct {
 	Status      string
 	ClienteId   uint                 `gorm:"column:cliente_id"`
 	Cliente     *ClienteModel        `gorm:"foreignKey:cliente_id"`
-	CategoriaId uint                 `gorm:"column:categoria_id"`
+	CategoriaId *uint                `gorm:"column:categoria_id"`
 	Categoria   *AtivoCategoriaModel `gorm:"foreignKey:categoria_id"`
 }
 
@@ -23,7 +23,11 @@ func (m *AtivoModel) ToEntity() *entity.Ativo {
 		cliente = m.Cliente.ToEntity()
 	}
 
-	categoria := entity.NewAtivoCategoria(m.CategoriaId, "")
+	var categoria *entity.AtivoCategoria
+	if m.CategoriaId != nil {
+		categoria = entity.NewAtivoCategoria(*m.CategoriaId, "")
+	}
+
 	if m.Categoria != nil {
 		categoria = m.Categoria.ToEntity()
 	}

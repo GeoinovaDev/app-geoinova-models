@@ -7,7 +7,7 @@ type CamadaCategoriaModel struct {
 	Nome        string
 	Cor         string `gorm:"column:cor_preenchimento"`
 	Borda       string `gorm:"column:cor_borda"`
-	CategoriaId uint   `gorm:"column:categoria_id"`
+	CategoriaId *uint  `gorm:"column:categoria_id"`
 }
 
 func (m *CamadaCategoriaModel) TableName() string {
@@ -15,9 +15,9 @@ func (m *CamadaCategoriaModel) TableName() string {
 }
 
 func (m *CamadaCategoriaModel) ToEntity() *entity.CamadaCategoria {
-	categoria := entity.NewCamadaCategoria(m.CategoriaId)
-	if categoria.Id == 0 {
-		categoria = nil
+	var categoria *entity.CamadaCategoria
+	if m.CategoriaId != nil && *m.CategoriaId > 0 {
+		categoria = entity.NewCamadaCategoria(*m.CategoriaId)
 	}
 
 	return entity.

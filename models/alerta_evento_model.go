@@ -12,7 +12,7 @@ type AlertaEventoModel struct {
 	Param     string
 	AlertaId  uint         `gorm:"column:alerta_id"`
 	Alerta    *AlertaModel `gorm:"foreignKey:alerta_id"`
-	CreatedAt []uint8      `gorm:"column:created_at"`
+	CreatedAt time.Time    `gorm:"column:created_at"`
 }
 
 func (m AlertaEventoModel) TableName() string {
@@ -25,14 +25,14 @@ func (m AlertaEventoModel) ToEntity() *entity.AlertaEvento {
 		alerta = m.Alerta.ToEntity()
 	}
 
-	createdAt, err := time.Parse("2006-01-02 15:04:05", string(m.CreatedAt))
-	if err != nil {
-	}
+	// createdAt, err := time.Parse("2006-01-02 15:04:05", string(m.CreatedAt))
+	// if err != nil {
+	// }
 
 	return entity.
 		NewAlertaEventoBuilder(m.Id, entity.AlertaEventoStatus(m.Status)).
 		WithParam(m.Param).
 		WithAlerta(alerta).
-		WithCreatedAt(createdAt).
+		WithCreatedAt(m.CreatedAt).
 		Build()
 }
