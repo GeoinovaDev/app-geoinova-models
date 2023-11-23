@@ -6,6 +6,7 @@ type UsuarioDominioModel struct {
 	Id        uint
 	Dominio   string
 	Role      string
+	Checked   bool
 	UsuarioId uint          `gorm:"column:usuario_id"`
 	Usuario   *UsuarioModel `gorm:"foreignKey:usuario_id"`
 }
@@ -24,6 +25,7 @@ func (m *UsuarioDominioModel) ToEntity() *entity.UsuarioDominio {
 		NewUsuarioDominioBuilder(m.Id).
 		WithDominio(m.Dominio).
 		WithRole(m.Role).
+		WithChecked(m.Checked).
 		WithUsuario(usuario).
 		Build()
 }
