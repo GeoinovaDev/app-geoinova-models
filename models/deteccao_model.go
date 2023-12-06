@@ -10,6 +10,7 @@ type DeteccaoModel struct {
 	PreviewDepoisUuid    string               `gorm:"preview_depois_uuid"`
 	PreviewResultadoUuid string               `gorm:"preview_resultado_uuid"`
 	ClasseId             uint                 `gorm:"column:classe_id"`
+	ClienteId            uint                 `gorm:"column:cliente_id"`
 	Classe               *DeteccaoClasseModel `gorm:"foreignKey:classe_id"`
 }
 
@@ -30,6 +31,7 @@ func (m DeteccaoModel) ToEntity() *entity.Deteccao {
 		WithImagemAntesUuid(m.PreviewAntesUuid).
 		WithImagemDepoisUuid(m.PreviewDepoisUuid).
 		WithImagemResultadoUuid(m.PreviewResultadoUuid).
+		WithCliente(entity.NewCliente(m.ClienteId)).
 		WithClasse(classe).
 		Build()
 }
