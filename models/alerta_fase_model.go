@@ -24,7 +24,7 @@ func (m AlertaFaseModel) ToEntity() *entity.AlertaFase {
 		alerta = m.Alerta.ToEntity()
 	}
 
-	createdAt, _ := time.Parse("01-02-2006 15:04:05", string(m.CreatedAt))
+	createdAt, _ := time.Parse("2006-01-02 15:04:05", string(m.CreatedAt))
 	return entity.
 		NewAlertaFaseBuilder(m.Id, entity.AlertaFaseStatus(m.Status)).
 		WithAlerta(alerta).
