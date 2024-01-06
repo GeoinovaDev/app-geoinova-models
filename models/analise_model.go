@@ -13,6 +13,7 @@ type AnaliseModel struct {
 	ImagemDepoisId uint          `gorm:"column:imagem_depois_id"`
 	ImagemDepois   *ImagemModel  `gorm:"foreignKey:imagem_depois_id"`
 	TotalArea      float32       `gorm:"column:total_area"`
+	TotalDeteccoes uint          `gorm:"column:total_deteccoes"`
 	AtivoId        uint          `gorm:"column:ativo_id"`
 	Ativo          *AtivoModel   `gorm:"foreignKey:ativo_id"`
 	UsuarioId      uint          `gorm:"column:usuario_id"`
@@ -53,6 +54,7 @@ func (m AnaliseModel) ToEntity() *entity.Analise {
 		WithAtivo(ativo).
 		WithImagemAntes(antes).
 		WithImagemDepois(depois).
+		WithTotalDeteccoes(m.TotalDeteccoes).
 		WithUsuario(usuario).
 		Build()
 }
