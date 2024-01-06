@@ -6,6 +6,7 @@ type DeteccaoModel struct {
 	Id                   uint
 	Wkt                  string
 	Descricao            string
+	AreaHa               float64              `gorm:"column:area_ha"`
 	PreviewAntesUuid     string               `gorm:"preview_antes_uuid"`
 	PreviewDepoisUuid    string               `gorm:"preview_depois_uuid"`
 	PreviewResultadoUuid string               `gorm:"preview_resultado_uuid"`
