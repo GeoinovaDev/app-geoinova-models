@@ -3,14 +3,16 @@ package models
 import "github.com/GeoinovaDev/app-geoinova-entity/entity"
 
 type CamadaModel struct {
-	Id          uint
-	Nome        string
-	Wkt         string
-	Detalhe     string
-	Area        float32
-	AtivoId     uint        `gorm:"column:ativo_id"`
-	Ativo       *AtivoModel `gorm:"foreignKey:ativo_id"`
-	CategoriaId uint        `gorm:"column:categoria_id"`
+	Id           uint
+	Nome         string
+	Wkt          string
+	Detalhe      string
+	Area         float32
+	AtivoId      uint             `gorm:"column:ativo_id"`
+	Ativo        *AtivoModel      `gorm:"foreignKey:ativo_id"`
+	CategoriaId  uint             `gorm:"column:categoria_id"`
+	Formulario   *FormularioModel `gorm:"foreignKey:formulario_id"`
+	FormularioId *uint            `gorm:"column:formulario_id"`
 }
 
 func (m *CamadaModel) TableName() string {
@@ -23,14 +25,20 @@ func (m *CamadaModel) ToEntity() *entity.Camada {
 		ativo = m.Ativo.ToEntity()
 	}
 
-	categoria := entity.NewCamadaCategoria(m.CategoriaId)
-	return entity.
+	var formulario *entity.Formulario
+	if m.FormularioId != nil {
+		formulario = entity.NewFormulario(*m.FormularioId)
+	}
+
+	builder := entity.
 		NewCamadaBuilder(m.Id).
 		WithNome(m.Nome).
 		WithWkt(m.Wkt).
 		WithDetalhe(m.Detalhe).
 		WithArea(m.Area).
 		WithAtivo(ativo).
-		WithCategoria(categoria).
-		Build()
+		WithFormulario(formulario).
+		WithCategoria(entity.NewCamadaCategoria(m.CategoriaId))
+
+	return builder.Build()
 }
