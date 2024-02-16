@@ -14,5 +14,10 @@ func (m *CamadaAtributoModel) TableName() string {
 }
 
 func (m *CamadaAtributoModel) ToEntity() *entity.CamadaAtributo {
-	return entity.NewCamadaAtributo(m.Id, m.Nome, m.Valor)
+	return entity.
+		NewCamadaAtributoBuilder(m.Id).
+		WithNome(m.Nome).
+		WithValor(m.Valor).
+		WithCamada(entity.NewCamada(m.CamadaId)).
+		Build()
 }
