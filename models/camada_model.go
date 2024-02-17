@@ -8,6 +8,7 @@ type CamadaModel struct {
 	Wkt          string
 	Detalhe      string
 	Area         float32
+	Atributos    string
 	AtivoId      uint             `gorm:"column:ativo_id"`
 	Ativo        *AtivoModel      `gorm:"foreignKey:ativo_id"`
 	CategoriaId  uint             `gorm:"column:categoria_id"`

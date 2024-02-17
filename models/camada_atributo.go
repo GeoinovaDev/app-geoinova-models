@@ -2,8 +2,6 @@ package models
 
 import (
 	"encoding/json"
-
-	"github.com/GeoinovaDev/app-geoinova-entity/entity"
 )
 
 type CamadaAtributoModel struct {
@@ -16,8 +14,8 @@ func (m *CamadaAtributoModel) TableName() string {
 	return "camadas_atributos"
 }
 
-func (m *CamadaAtributoModel) ToEntity() []*entity.CamadaAtributo {
-	atributos := []*entity.CamadaAtributo{}
+func (m *CamadaAtributoModel) ToEntity() map[string]string {
+	atributos := map[string]string{}
 	json.Unmarshal([]byte(m.Json), &atributos)
 	return atributos
 }
