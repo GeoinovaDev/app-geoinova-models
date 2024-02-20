@@ -34,5 +34,7 @@ github.com/GeoinovaDev/app-geoinova-entity v1.8.6 h1:SPSozAqMqLstc9NYGAQfQxVtN5+
 github.com/GeoinovaDev/app-geoinova-entity v1.8.6/go.mod h1:ggqdvILhqOjc6aF2oKR4S0JZbgLqjLIC0suoSHEp0ME=
 github.com/GeoinovaDev/app-geoinova-entity v1.8.7 h1:cslk1nSw+InVFyiZA4sa0Jgh1YFRleUS9OX1Mu3Ev1U=
 github.com/GeoinovaDev/app-geoinova-entity v1.8.7/go.mod h1:ggqdvILhqOjc6aF2oKR4S0JZbgLqjLIC0suoSHEp0ME=
+github.com/GeoinovaDev/app-geoinova-entity v1.8.8 h1:5BdgzMH/xK3/TnLR2emB2BZeBSF/VYUs+He451WQjMs=
+github.com/GeoinovaDev/app-geoinova-entity v1.8.8/go.mod h1:ggqdvILhqOjc6aF2oKR4S0JZbgLqjLIC0suoSHEp0ME=
 github.com/elliotchance/phpserialize v1.3.3 h1:hV4QVmGdCiYgoBbw+ADt6fNgyZ2mYX0OgpnON1adTCM=
 github.com/elliotchance/phpserialize v1.3.3/go.mod h1:gt7XX9+ETUcLXbtTKEuyrqW3lcLUAeS/AnGZ2e49TZs=

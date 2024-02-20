@@ -7,7 +7,6 @@ type CamadaModel struct {
 	Nome         string
 	Wkt          string
 	Detalhe      string
-	Area         float32
 	AtivoId      uint             `gorm:"column:ativo_id"`
 	Ativo        *AtivoModel      `gorm:"foreignKey:ativo_id"`
 	CategoriaId  uint             `gorm:"column:categoria_id"`
@@ -35,7 +34,6 @@ func (m *CamadaModel) ToEntity() *entity.Camada {
 		WithNome(m.Nome).
 		WithWkt(m.Wkt).
 		WithDetalhe(m.Detalhe).
-		WithArea(m.Area).
 		WithAtivo(ativo).
 		WithFormulario(formulario).
 		WithCategoria(entity.NewCamadaCategoria(m.CategoriaId))
