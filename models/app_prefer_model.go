@@ -12,7 +12,7 @@ type AppPreferModel struct {
 }
 
 func (m *AppPreferModel) TableName() string {
-	return "app_prefer"
+	return "app_prefers"
 }
 
 func (m *AppPreferModel) ToEntity() *entity.AppPrefer {
