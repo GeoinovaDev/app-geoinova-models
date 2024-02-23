@@ -4,6 +4,7 @@ type PermissaoGrupoPermissaoModel struct {
 	Id          uint
 	GrupoId     uint `gorm:"column:grupo_id"`
 	PermissaoId uint `gorm:"column:permissao_id"`
+	Enabled     bool
 }
 
 func (m *PermissaoGrupoPermissaoModel) TableName() string {
