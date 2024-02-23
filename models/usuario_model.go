@@ -6,13 +6,15 @@ import (
 )
 
 type UsuarioModel struct {
-	Id        uint
-	Nome      string
-	Email     string
-	Senha     string
-	Status    string
-	ClienteId uint          `gorm:"column:cliente_id"`
-	Cliente   *ClienteModel `gorm:"foreignKey:cliente_id"`
+	Id               uint
+	Nome             string
+	Email            string
+	Senha            string
+	Status           string
+	ClienteId        uint                 `gorm:"column:cliente_id"`
+	Cliente          *ClienteModel        `gorm:"foreignKey:cliente_id"`
+	GrupoPermissaoId uint                 `gorm:"column:grupo_permissao_id"`
+	GrupoPermissao   *GrupoPermissaoModel `gorm:"foreignKey:grupo_permissao_id"`
 }
 
 func (m *UsuarioModel) TableName() string {
