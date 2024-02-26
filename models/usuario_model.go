@@ -26,6 +26,10 @@ func (m *UsuarioModel) ToEntity() *entity.Usuario {
 	if m.Cliente != nil {
 		cliente = m.Cliente.ToEntity()
 	}
+	grupoPermissao := entity.NewGrupoPermissao(m.GrupoPermissaoId)
+	if m.GrupoPermissao != nil {
+		grupoPermissao = m.GrupoPermissao.ToEntity()
+	}
 
 	return entity.
 		NewUsuarioBuilder(m.Id).
@@ -34,5 +38,6 @@ func (m *UsuarioModel) ToEntity() *entity.Usuario {
 		WithSenha(encrypt.DecodeString(m.Senha)).
 		WithStatus(entity.UsuarioStatus(m.Status)).
 		WithCliente(cliente).
+		WithGrupoPermissao(grupoPermissao).
 		Build()
 }
