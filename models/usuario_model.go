@@ -11,6 +11,8 @@ type UsuarioModel struct {
 	Email            string
 	Senha            string
 	Status           string
+	Descricao        string
+	Papel            string
 	ClienteId        uint                 `gorm:"column:cliente_id"`
 	Cliente          *ClienteModel        `gorm:"foreignKey:cliente_id"`
 	GrupoPermissaoId uint                 `gorm:"column:grupo_permissao_id"`
@@ -35,6 +37,8 @@ func (m *UsuarioModel) ToEntity() *entity.Usuario {
 		NewUsuarioBuilder(m.Id).
 		WithNome(m.Nome).
 		WithEmail(m.Email).
+		WithPapel(entity.UsuarioPapel(m.Papel)).
+		WithDescricao(m.Descricao).
 		WithSenha(encrypt.DecodeString(m.Senha)).
 		WithStatus(entity.UsuarioStatus(m.Status)).
 		WithCliente(cliente).
