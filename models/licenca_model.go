@@ -29,8 +29,18 @@ func (m *LicencaModel) TableName() string {
 }
 
 func (m *LicencaModel) ToEntity() *entity.Licenca {
-	dtProtocolo, _ := time.Parse("2006-01-02 15:04:05", string(m.DataProtocolo))
-	dtVencimento, _ := time.Parse("2006-01-02 15:04:05", string(m.DataVencimento))
+	var dtProtocolo *time.Time
+	var dtVencimento *time.Time
+
+	if m.DataProtocolo != nil {
+		_dtProtocolo, _ := time.Parse("2006-01-02 15:04:05", string(m.DataProtocolo))
+		dtProtocolo = &_dtProtocolo
+	}
+
+	if m.DataVencimento != nil {
+		_dtVencimento, _ := time.Parse("2006-01-02 15:04:05", string(m.DataVencimento))
+		dtVencimento = &_dtVencimento
+	}
 
 	var tipo *entity.LicencaTipo
 	if m.Tipo != nil {
