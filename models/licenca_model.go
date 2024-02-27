@@ -16,7 +16,7 @@ type LicencaModel struct {
 	FileSource     string            `gorm:"column:file_source"`
 	DataProtocolo  []uint8           `gorm:"column:data_protocolo"`
 	DataVencimento []uint8           `gorm:"column:data_vencimento"`
-	TipoId         uint              `gorm:"column:tipoca_id"`
+	TipoId         uint              `gorm:"column:tipo_id"`
 	Tipo           *LicencaTipoModel `gorm:"foreignKey:tipo_id"`
 	CamadaId       uint              `gorm:"column:camada_id"`
 	Camada         *CamadaModel      `gorm:"foreignKey:camada_id"`
