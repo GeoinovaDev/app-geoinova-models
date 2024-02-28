@@ -3,14 +3,19 @@ package models
 import "github.com/GeoinovaDev/app-geoinova-entity/entity"
 
 type LicencaTipoModel struct {
-	Id   uint
-	Nome string
+	Id        uint
+	Nome      string
+	Descricao string
 }
 
-func (l *LicencaTipoModel) TableName() string {
+func (m *LicencaTipoModel) TableName() string {
 	return "licencas_tipos"
 }
 
-func (l *LicencaTipoModel) ToEntity() *entity.LicencaTipo {
-	return entity.NewLicencaTipoWithNome(l.Id, l.Nome)
+func (m *LicencaTipoModel) ToEntity() *entity.LicencaTipo {
+	return entity.
+		NewLicencaTipoBuilder(m.Id).
+		WithNome(m.Nome).
+		WithDescricao(m.Descricao).
+		Build()
 }

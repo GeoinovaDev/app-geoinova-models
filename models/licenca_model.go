@@ -18,7 +18,7 @@ type LicencaModel struct {
 	DataVencimento []uint8           `gorm:"column:data_vencimento"`
 	TipoId         uint              `gorm:"column:tipo_id"`
 	Tipo           *LicencaTipoModel `gorm:"foreignKey:tipo_id"`
-	CamadaId       uint              `gorm:"column:camada_id"`
+	CamadaId       *uint             `gorm:"column:camada_id"`
 	Camada         *CamadaModel      `gorm:"foreignKey:camada_id"`
 	AtivoId        uint              `gorm:"column:ativo_id"`
 	Ativo          *AtivoModel       `gorm:"foreignKey:ativo_id"`
@@ -42,17 +42,21 @@ func (m *LicencaModel) ToEntity() *entity.Licenca {
 		dtVencimento = &_dtVencimento
 	}
 
-	var tipo *entity.LicencaTipo
+	tipo := entity.NewLicencaTipo(m.TipoId)
 	if m.Tipo != nil {
 		tipo = m.Tipo.ToEntity()
 	}
 
 	var camada *entity.Camada
+	if m.CamadaId != nil {
+		camada = entity.NewCamada(*m.CamadaId)
+	}
+
 	if m.Camada != nil {
 		camada = m.Camada.ToEntity()
 	}
 
-	var ativo *entity.Ativo
+	ativo := entity.NewAtivo(m.AtivoId)
 	if m.Ativo != nil {
 		ativo = m.Ativo.ToEntity()
 	}
