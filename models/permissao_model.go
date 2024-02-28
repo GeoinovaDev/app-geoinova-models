@@ -22,12 +22,12 @@ func (m PermissaoModel) ToEntity() *entity.Permissao {
 	if m.CategoriaId != 0 {
 		categoria = entity.NewPermissaoCategoria(m.CategoriaId)
 	}
-	
+
 	return entity.
 		NewPermissaoBuilder(m.Id).
 		WithNome(m.Nome).
 		WithCategoria(categoria).
-		WithAction(m.Action).
+		WithAction(entity.PermissaoAction(m.Action)).
 		WithLeitura(m.Leitura).
 		WithEscrita(m.Escrita).
 		WithExclusao(m.Exclusao).
