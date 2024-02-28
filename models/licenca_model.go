@@ -11,6 +11,7 @@ type LicencaModel struct {
 	Nome           string
 	Descricao      string
 	Status         string
+	TipoOutro      string            `gorm:"column:tipo_outro"`
 	Filename       string            `gorm:"column:file_name"`
 	FileBucket     string            `gorm:"column:file_bucket"`
 	FileSource     string            `gorm:"column:file_source"`
@@ -45,6 +46,7 @@ func (m *LicencaModel) ToEntity() *entity.Licenca {
 	tipo := entity.NewLicencaTipo(m.TipoId)
 	if m.Tipo != nil {
 		tipo = m.Tipo.ToEntity()
+		tipo.Detalhe = m.TipoOutro
 	}
 
 	var camada *entity.Camada

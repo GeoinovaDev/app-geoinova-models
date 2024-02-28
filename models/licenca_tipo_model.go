@@ -16,6 +16,5 @@ func (m *LicencaTipoModel) ToEntity() *entity.LicencaTipo {
 	return entity.
 		NewLicencaTipoBuilder(m.Id).
 		WithNome(m.Nome).
-		WithDescricao(m.Descricao).
 		Build()
 }
