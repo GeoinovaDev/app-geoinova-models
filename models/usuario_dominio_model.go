@@ -3,12 +3,14 @@ package models
 import "github.com/GeoinovaDev/app-geoinova-entity/entity"
 
 type UsuarioDominioModel struct {
-	Id        uint
-	Dominio   string
-	Role      string
-	Checked   bool
-	UsuarioId uint          `gorm:"column:usuario_id"`
-	Usuario   *UsuarioModel `gorm:"foreignKey:usuario_id"`
+	Id         uint
+	Dominio    string
+	Role       string
+	Checked    bool
+	AppVersion string        `gorm:"column:app_version"`
+	ApiVersion string        `gorm:"column:api_version"`
+	UsuarioId  uint          `gorm:"column:usuario_id"`
+	Usuario    *UsuarioModel `gorm:"foreignKey:usuario_id"`
 }
 
 func (m *UsuarioDominioModel) TableName() string {
@@ -27,5 +29,7 @@ func (m *UsuarioDominioModel) ToEntity() *entity.UsuarioDominio {
 		WithRole(m.Role).
 		WithChecked(m.Checked).
 		WithUsuario(usuario).
+		WithAppVersion(m.AppVersion).
+		WithApiVersion(m.ApiVersion).
 		Build()
 }
