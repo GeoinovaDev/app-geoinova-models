@@ -18,9 +18,9 @@ type DeteccaoModel struct {
 	ClasseId             uint                 `gorm:"column:classe_id"`
 	ClienteId            uint                 `gorm:"column:cliente_id"`
 	Classe               *DeteccaoClasseModel `gorm:"foreignKey:classe_id"`
-	PreviewAntes         string               `gorm:"preview_antes"`
-	PreviewDepois        string               `gorm:"preview_depois"`
-	PreviewRegiao        string               `gorm:"preview_regiao"`
+	PreviewAntesNome     string               `gorm:"preview_antes_nome"`
+	PreviewDepoisNome    string               `gorm:"preview_depois_nome"`
+	PreviewRegiaoNome    string               `gorm:"preview_regiao_nome"`
 	BoundsAntes          string               `gorm:"bounds_antes"`
 	BoundsDepois         string               `gorm:"bounds_depois"`
 	BoundsRegiao         string               `gorm:"bounds_regiao"`
@@ -70,15 +70,15 @@ func (m DeteccaoModel) ToEntity() *entity.Deteccao {
 			NewDeteccaoPreviewsBuilder().
 			WithAntes(entity.
 				NewDeteccaoPreviewBuilder().
-				WithNome(m.PreviewAntes).
+				WithNome(m.PreviewAntesNome).
 				Build()).
 			WithDepois(entity.
 				NewDeteccaoPreviewBuilder().
-				WithNome(m.PreviewDepois).
+				WithNome(m.PreviewDepoisNome).
 				Build()).
 			WithRegiao(entity.
 				NewDeteccaoPreviewBuilder().
-				WithNome(m.PreviewRegiao).
+				WithNome(m.PreviewRegiaoNome).
 				Build()).
 			Build()).
 		WithBounds(entity.
