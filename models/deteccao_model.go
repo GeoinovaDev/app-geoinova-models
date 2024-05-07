@@ -24,7 +24,7 @@ type DeteccaoModel struct {
 	BoundsAntes          string               `gorm:"bounds_antes"`
 	BoundsDepois         string               `gorm:"bounds_depois"`
 	BoundsRegiao         string               `gorm:"bounds_regiao"`
-	CamadaBaseId         uint                 `gorm:"column:camada_base_id"`
+	CamadaBaseId         *uint                `gorm:"column:camada_base_id"`
 	CamadaBase           *CamadaModel         `gorm:"foreignKey:camada_base_id"`
 }
 
@@ -60,8 +60,8 @@ func (m DeteccaoModel) ToEntity() *entity.Deteccao {
 	}
 
 	var camadaBase *entity.Camada
-	if m.CamadaBase != nil {
-		camadaBase = entity.NewCamada(m.CamadaBaseId)
+	if m.CamadaBaseId != nil {
+		camadaBase = entity.NewCamada(*m.CamadaBaseId)
 	}
 
 	return entity.
