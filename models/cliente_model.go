@@ -9,6 +9,7 @@ type ClienteModel struct {
 	Status    string
 }
 
+
 func (m *ClienteModel) TableName() string {
 	return "clientes"
 }
