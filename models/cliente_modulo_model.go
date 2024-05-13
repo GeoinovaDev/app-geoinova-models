@@ -9,5 +9,5 @@ type ClienteModuloModel struct {
 }
 
 func (m *ClienteModuloModel) TableName() string {
-	return "cliente_modulos"
+	return "clientes_modulos"
 }
