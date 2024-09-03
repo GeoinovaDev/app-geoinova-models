@@ -13,6 +13,7 @@ type UsuarioModel struct {
 	Status           string
 	Descricao        string
 	Papel            string
+	Telefone         string
 	ClienteId        uint                 `gorm:"column:cliente_id"`
 	Cliente          *ClienteModel        `gorm:"foreignKey:cliente_id"`
 	GrupoPermissaoId uint                 `gorm:"column:grupo_permissao_id"`
@@ -43,5 +44,6 @@ func (m *UsuarioModel) ToEntity() *entity.Usuario {
 		WithStatus(entity.UsuarioStatus(m.Status)).
 		WithCliente(cliente).
 		WithGrupoPermissao(grupoPermissao).
+		WithTelefone(entity.ParseTelefone(m.Telefone)).
 		Build()
 }
