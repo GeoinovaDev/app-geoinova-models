@@ -14,6 +14,7 @@ type UsuarioModel struct {
 	Descricao        string
 	Papel            string
 	Telefone         *string
+	Notificacao      string
 	ClienteId        uint                 `gorm:"column:cliente_id"`
 	Cliente          *ClienteModel        `gorm:"foreignKey:cliente_id"`
 	GrupoPermissaoId uint                 `gorm:"column:grupo_permissao_id"`
@@ -50,5 +51,6 @@ func (m *UsuarioModel) ToEntity() *entity.Usuario {
 		WithCliente(cliente).
 		WithGrupoPermissao(grupoPermissao).
 		WithTelefone(entity.ParseTelefone(telefone)).
+		WithRecebeNotificacao(m.Notificacao == "A").
 		Build()
 }
